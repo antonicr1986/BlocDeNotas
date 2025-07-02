@@ -6,12 +6,12 @@ Aquí puedes ver cómo luce la interfaz principal:
 ![Interfaz principal](screenshots/inicio.jpg)
 
 Opciones de la barra de tareas desplegadas:
-![Interfaz principal](screenshots/archivo.jpg)
-![Interfaz principal](screenshots/editar.jpg)
-![Interfaz principal](screenshots/ver.jpg)
+![Menú archivo](screenshots/archivo.jpg)
+![Menú editar](screenshots/editar.jpg)
+![Menú ver](screenshots/ver.jpg)
 
 Ventana configuración:
-![Interfaz principal](screenshots/configuracion.jpg)
+![Ventana configuración](screenshots/configuracion.jpg)
 
 
 
