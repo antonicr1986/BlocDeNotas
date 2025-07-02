@@ -3,7 +3,7 @@ Aplicación de escritorio tipo bloc de notas hecha en C# con Windows Forms.
 ## 📝 Vista previa de la aplicación
 
 Aquí puedes ver cómo luce la interfaz principal:
-![Interfaz principal](screenshoots/inicio.jpg)
+![Interfaz principal](screenshots/inicio.jpg)
 
 Opciones de la barra de tareas desplegadas:
 ![Interfaz principal](screenshots/archivo.jpg)
@@ -11,7 +11,7 @@ Opciones de la barra de tareas desplegadas:
 ![Interfaz principal](screenshots/ver.jpg)
 
 Ventana configuración:
-![Interfaz principal](screenshoots/configuracion.jpg)
+![Interfaz principal](screenshots/configuracion.jpg)
 
 
 
