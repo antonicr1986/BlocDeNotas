@@ -9,3 +9,20 @@ C:\Users\anton\source\repos\BlocNotasWF\BlocNotasWF\obj\Release\BlocNotasWF.exe
 C:\Users\anton\source\repos\BlocNotasWF\BlocNotasWF\obj\Release\BlocNotasWF.pdb
 C:\Users\anton\source\repos\BlocNotasWF\BlocNotasWF\obj\Release\BlocNotasWF.csproj.AssemblyReference.cache
 C:\Users\anton\source\repos\BlocNotasWF\BlocNotasWF\obj\Release\BlocNotasWF.Form2.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\bin\Release\BlocNotasWF.exe.config
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\bin\Release\BlocNotasWF.exe
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\bin\Release\BlocNotasWF.pdb
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\bin\Release\Newtonsoft.Json.dll
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\bin\Release\Newtonsoft.Json.xml
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.csproj.AssemblyReference.cache
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.exe.config
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.FormConfiguracion.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.MainForm.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.FormBuscar.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.FormPestañas.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.Properties.Resources.resources
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.csproj.GenerateResource.cache
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.csproj.CoreCompileInputs.cache
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNota.B6834F7E.Up2Date
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.exe
+C:\Users\anton\OneDrive\Proyectos GIthub\BlocDeNotas\BlocNotasWF\obj\Release\BlocNotasWF.pdb
