@@ -23,6 +23,8 @@ Ventana configuración:
 ## 🚀 Cómo ejecutarlo
 Abre la solución `.sln` en Visual Studio y ejecuta el proyecto principal.
 
+Si no tienes Visual studio por ejemplo puedes ir a la carpeta BlocDeNotas\BlocNotasWF\bin\Release y abrir el archivo BlocNotasWF.exe
+
 ## ✍️ Autor
 Antonio Company – [GitHub](https://github.com/antonicr1986)
 
