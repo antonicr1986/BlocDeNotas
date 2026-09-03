@@ -1,0 +1,49 @@
+name: Release
+
+# Se dispara al empujar un tag de version: v1.0.0, v1.1.0, v2.0.0...
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write   # necesario para crear la Release
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Set up NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore BlocNotasWF.sln
+
+      - name: Build
+        run: msbuild BlocNotasWF.sln /p:Configuration=Release /verbosity:minimal
+
+      # Empaqueta el ejecutable y sus dependencias, sin simbolos de depuracion
+      - name: Package
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}"
+          $staging = "dist/BlocNotasWF-$version"
+          New-Item -ItemType Directory -Path $staging -Force | Out-Null
+          Copy-Item -Path "BlocNotasWF/bin/Release/*" -Destination $staging -Recurse -Exclude "*.pdb"
+          Compress-Archive -Path "$staging/*" -DestinationPath "BlocNotasWF-$version.zip"
+          Get-ChildItem "BlocNotasWF-$version.zip"
+
+      # gh viene preinstalado en los runners, no hace falta ninguna accion externa
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          gh release create ${{ github.ref_name }}
+          "BlocNotasWF-${{ github.ref_name }}.zip"
+          --title "BlocNotasWF ${{ github.ref_name }}"
+          --generate-notes
