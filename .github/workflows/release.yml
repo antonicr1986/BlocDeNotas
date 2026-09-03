@@ -15,6 +15,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # El tag manda: v1.2.3 se escribe como 1.2.3.0 en AssemblyInfo.cs antes
+      # de compilar, para que las propiedades del .exe coincidan con la Release
+      - name: Set version from tag
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if ($tag -notmatch '^v(\d+)\.(\d+)\.(\d+)$') {
+            throw "El tag '$tag' no tiene el formato vMAJOR.MINOR.PATCH"
+          }
+          $version = "$($Matches[1]).$($Matches[2]).$($Matches[3]).0"
+          $file = "BlocNotasWF/Properties/AssemblyInfo.cs"
+          $content = Get-Content $file -Raw -Encoding utf8
+          $content = $content -replace 'AssemblyVersion\("[^"]*"\)', "AssemblyVersion(""$version"")"
+          $content = $content -replace 'AssemblyFileVersion\("[^"]*"\)', "AssemblyFileVersion(""$version"")"
+          Set-Content $file -Value $content -Encoding utf8BOM -NoNewline
+          Write-Host "Version establecida a $version"
+          Select-String -Path $file -Pattern 'AssemblyVersion|AssemblyFileVersion'
+
       - name: Set up MSBuild
         uses: microsoft/setup-msbuild@v2
 
