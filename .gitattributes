@@ -1,0 +1,31 @@
+# Normaliza los finales de linea: en el repositorio siempre LF,
+# en el disco de cada uno lo que su sistema espere.
+* text=auto
+
+# Visual Studio prefiere CRLF en estos
+*.sln       text eol=crlf
+*.csproj    text eol=crlf
+*.config    text eol=crlf
+*.resx      text eol=crlf
+*.settings  text eol=crlf
+
+# Estos van siempre con LF
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.md        text eol=lf
+.gitignore  text eol=lf
+
+# C#: mejores diffs y busqueda de funciones
+*.cs        text diff=csharp
+
+# Binarios: git no debe tocarlos nunca
+*.ico       binary
+*.jpg       binary
+*.jpeg      binary
+*.png       binary
+*.gif       binary
+*.exe       binary
+*.dll       binary
+*.pdb       binary
+*.zip       binary
+*.nupkg     binary
