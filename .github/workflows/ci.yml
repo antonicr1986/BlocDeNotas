@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'screenshots/**'
+  pull_request:
+    branches: [master]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'screenshots/**'
+  # Permite lanzar el pipeline a mano desde la pestana Actions
+  workflow_dispatch:
+
+jobs:
+  build:
+    # WinForms sobre .NET Framework solo compila en Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pone MSBuild en el PATH. .NET Framework no usa "dotnet build"
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Set up NuGet
+        uses: NuGet/setup-nuget@v2
+
+      # Descarga los paquetes de packages.config, que ya no estan en el repo
+      - name: Restore NuGet packages
+        run: nuget restore BlocNotasWF.sln
+
+      - name: Build
+        run: msbuild BlocNotasWF.sln /p:Configuration=Release /verbosity:minimal
+
+      # Deja el ejecutable descargable desde la pagina de la ejecucion
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: BlocNotasWF-${{ github.sha }}
+          path: BlocNotasWF/bin/Release/
+          if-no-files-found: error
