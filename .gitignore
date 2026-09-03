@@ -1,0 +1,36 @@
+# Resultados de compilacion
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.exe
+*.dll
+*.pdb
+*.cache
+
+# Ficheros de usuario y del IDE
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vspscc
+*.vssscc
+
+# Paquetes NuGet (se restauran con "nuget restore")
+packages/
+*.nupkg
+!packages/build/
+
+# Publicacion e instaladores
+[Pp]ublish/
+*.msi
+*.msix
+*.appx
+Output/
+
+# Otros
+*.log
+*.tmp
+Thumbs.db
+desktop.ini
