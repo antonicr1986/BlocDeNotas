@@ -131,7 +131,7 @@
             this.archivoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(68, 22);
-            this.archivoToolStripMenuItem.Text = "Achivo";
+            this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // abrirToolStripMenuItem
             // 
