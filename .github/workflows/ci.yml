@@ -19,6 +19,26 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Busca credenciales en TODO el historial, no solo en el ultimo commit.
+  # Corre en Linux aunque el build sea en Windows: es mas rapido y arranca
+  # antes, y no depende del build (una fuga importa aunque el codigo compile).
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # gitleaks necesita el historial completo
+
+      - name: Install gitleaks
+        run: |
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz" | tar -xz gitleaks
+          sudo mv gitleaks /usr/local/bin/
+
+      # --redact es importante: sin el, el secreto encontrado acabaria escrito
+      # en los logs de la ejecucion, que en un repo publico ve cualquiera
+      - name: Scan for secrets
+        run: gitleaks git . --config .gitleaks.toml --redact --verbose
+
   build:
     # WinForms sobre .NET Framework solo compila en Windows
     runs-on: windows-latest

@@ -1,0 +1,45 @@
+# Configuracion de gitleaks.
+#
+# Extiende las reglas por defecto (que cubren claves de proveedores conocidos:
+# Google, AWS, Stripe, GitHub...) con dos patrones que esas reglas NO detectan
+# y que en .NET son los mas habituales: cadenas de conexion con contrasena y
+# credenciales escritas directamente en el codigo.
+
+[extend]
+useDefault = true
+
+# Rutas donde una credencial de mentira es normal y esperada.
+# Sin esto, cada test con una contrasena de prueba genera una alerta, y una
+# alerta que se ignora es peor que no tener alerta.
+[allowlist]
+description = "Tests, documentacion y plantillas"
+paths = [
+  '''(?i)(^|/)tests?/''',
+  '''(?i)Tests?\.(cs|java|js|ts|py)$''',
+  '''(?i)\.md$''',
+  '''(?i)\.example($|\.)''',
+  '''(?i)example\.(json|config|xml)$''',
+]
+
+[[rules]]
+id = "connection-string-password"
+description = "Cadena de conexion con contrasena"
+regex = '''(?i)(?:password|pwd)\s*=\s*["']?([^;"'\s&<>$]{4,})'''
+tags = ["connection-string"]
+
+  [rules.allowlist]
+  regexTarget = "match"
+  regexes = [
+    '''(?i)(tu_contrasena|tu_password|your_password|placeholder|example|changeme|xxx+|\*{3,})''',
+    '''(?i)passwordchar''',
+  ]
+
+[[rules]]
+id = "hardcoded-credential"
+description = "Credencial asignada directamente en codigo"
+regex = '''(?i)(?:string|var|private|static)\s+\w*(?:password|contrasena|pwd|usuario)\w*\s*=\s*"([^"]{3,})"'''
+tags = ["credential"]
+
+  [rules.allowlist]
+  regexTarget = "match"
+  regexes = ['''(?i)(tu_|your_|placeholder|example|localhost|""$)''']
