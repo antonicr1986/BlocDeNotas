@@ -56,12 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormCustomPrintDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCustomPrintDialog.Designer.cs">
-      <DependentUpon>FormCustomPrintDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
