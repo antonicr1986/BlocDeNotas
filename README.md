@@ -117,6 +117,24 @@ Publicar una versión nueva es, por tanto:
 
     git tag v1.1.0
     git push origin v1.1.0
+    
+### Mantenimiento y seguridad
+
+Además de compilar y publicar, el repositorio tiene tres controles automáticos:
+
+**Escaneo de secretos** — `ci.yml` pasa gitleaks sobre el historial completo en
+cada ejecución, con la configuración de `.gitleaks.toml`. Detecta credenciales
+que ya estén publicadas; para que no lleguen a estarlo, hay además un hook
+`pre-commit` local que bloquea el commit antes del push.
+
+**Dependabot** — Revisa mensualmente los paquetes NuGet y las versiones de las
+actions, y agrupa las actualizaciones en una sola pull request en lugar de abrir
+una por dependencia. Las versiones mayores de NuGet quedan excluidas y se
+revisan a mano; las de las actions no, porque suelen ser cambios de runtime que
+conviene seguir.
+
+**Rama protegida** — `master` no admite *force push* ni borrado.
+    
 
 ## 🛠️ Tecnologías
 
