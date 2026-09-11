@@ -1,0 +1,34 @@
+version: 2
+
+updates:
+  # Paquetes NuGet de la solucion
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    # Una sola PR con todas las actualizaciones menores y de parche,
+    # en lugar de una PR por paquete
+    groups:
+      dependencias:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Los saltos de version mayor no se automatizan: pueden traer cambios
+    # que rompan el codigo, y eso merece una decision, no una PR mas
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # Versiones de las acciones usadas en los workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    groups:
+      acciones:
+        patterns:
+          - "*"
