@@ -54,7 +54,10 @@ jobs:
           New-Item -ItemType Directory -Path $staging -Force | Out-Null
           Copy-Item -Path "BlocNotasWF/bin/Release/*" -Destination $staging -Recurse -Exclude "*.pdb"
           Compress-Archive -Path "$staging/*" -DestinationPath "BlocNotasWF-$version.zip"
-          Get-ChildItem "BlocNotasWF-$version.zip"
+          # Copia con nombre fijo para poder enlazar siempre a
+          # /releases/latest/download/BlocNotasWF.zip (p. ej. desde la web de CV)
+          Copy-Item "BlocNotasWF-$version.zip" "BlocNotasWF.zip"
+          Get-ChildItem "BlocNotasWF*.zip"
 
       # gh viene preinstalado en los runners, no hace falta ninguna accion externa
       - name: Create GitHub Release
@@ -63,5 +66,6 @@ jobs:
         run: >
           gh release create ${{ github.ref_name }}
           "BlocNotasWF-${{ github.ref_name }}.zip"
+          "BlocNotasWF.zip"
           --title "BlocNotasWF ${{ github.ref_name }}"
           --generate-notes
